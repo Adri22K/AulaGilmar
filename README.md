@@ -97,41 +97,41 @@ git reset --hard HEAD~1	Desfaz o último commit (⚠️ cuidado)
 <h1>  🧰 Comandos Git Importantes </h1>
 
 🔍 Exploração e Status
-git status	> Mostra o que mudou, arquivos prontos para commit, etc.
-git log	> Mostra o histórico de commits (pressione q para sair).
-git log --oneline --graph --decorate	> Histórico resumido, ótimo para visualizar branches.
-git diff	> Mostra diferenças entre seu código e o último commit.
-git show <commit_id>	> Mostra o que foi alterado em um commit específico.
+git status	→ Mostra o que mudou, arquivos prontos para commit, etc.
+git log	→ Mostra o histórico de commits (pressione q para sair).
+git log --oneline --graph --decorate	→ Histórico resumido, ótimo para visualizar branches.
+git diff	→ Mostra diferenças entre seu código e o último commit.
+git show <commit_id>	→ Mostra o que foi alterado em um commit específico.
 
 🌱 Branches (Ramificações)
 
-git branch	Lista todas as branches locais.
-git branch nome-da-branch	Cria uma nova branch.
-git checkout nome-da-branch	Troca para outra branch.
-git checkout -b nome-da-branch	Cria e já troca para a nova branch.
-git merge nome-da-branch	Junta outra branch na branch atual.
-git branch -d nome-da-branch	Apaga uma branch local.
+git branch →	Lista todas as branches locais.
+git branch nome-da-branch	→ Cria uma nova branch.
+git checkout nome-da-branch	→ Troca para outra branch.
+git checkout -b nome-da-branch	→ Cria e já troca para a nova branch.
+git merge nome-da-branch	→ Junta outra branch na branch atual.
+git branch -d nome-da-branch	→ Apaga uma branch local.
 
 📦 Trabalhando com Commits
-git commit --amend	> Edita o último commit (mensagem ou arquivos).
-git reset --soft HEAD~1	> Desfaz o último commit, mas mantém as mudanças no stage.
-git reset --hard HEAD~1	> Apaga o último commit e as mudanças (⚠️ cuidado).
-git revert <commit_id>	> Cria um novo commit que desfaz outro commit.
+git commit --amend	→ Edita o último commit (mensagem ou arquivos).
+git reset --soft HEAD~1	→ Desfaz o último commit, mas mantém as mudanças no stage.
+git reset --hard HEAD~1	→ Apaga o último commit e as mudanças (⚠️ cuidado).
+git revert <commit_id>	→ Cria um novo commit que desfaz outro commit.
 
 🔄 Sincronização e Colaboração
-git fetch	> Baixa alterações do remoto sem misturar no seu código.
-git pull	> Baixa e mescla alterações do remoto na sua branch.
-git push origin nome-da-branch	> Envia sua branch para o repositório remoto.
-git remote -v	> Lista repositórios remotos conectados.
+git fetch	→ Baixa alterações do remoto sem misturar no seu código.
+git pull	→ Baixa e mescla alterações do remoto na sua branch.
+git push origin nome-da-branch	→ Envia sua branch para o repositório remoto.
+git remote -v	→ Lista repositórios remotos conectados.
 
 🧹 Limpeza e Segurança
-git stash	> Guarda temporariamente mudanças sem fazer commit.
-git stash pop	> Recupera mudanças guardadas pelo stash.
-git clean -f	> Remove arquivos não rastreados (⚠️ cuidado).
+git stash → Guarda temporariamente mudanças sem fazer commit.
+git stash pop	→ Recupera mudanças guardadas pelo stash.
+git clean -f	→ Remove arquivos não rastreados (⚠️ cuidado).
 
 🆘 Ajuda
-git help <comando>	> Mostra a documentação do comando.
-git --version	>  Mostra a versão do Git instalada.
+git help <comando>	→ Mostra a documentação do comando.
+git --version	→ Mostra a versão do Git instalada.
 
 📌 Dica de ouro:
 Sempre faça git pull antes de começar a mexer no projeto para evitar conflitos e manter tudo atualizado.
