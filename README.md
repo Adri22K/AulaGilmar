@@ -85,7 +85,7 @@ git commit -m "mensagem"
 git push
 
 
-🔧 Comandos Úteis Extras
+<h1> 🔧 Comandos Úteis Extras </h1>
 Comando	Para que serve
 git log	Mostra histórico de commits
 git checkout -b nome-da-branch	Cria e muda para uma nova branch
@@ -97,15 +97,14 @@ git reset --hard HEAD~1	Desfaz o último commit (⚠️ cuidado)
 <h1>  🧰 Comandos Git Importantes </h1>
 
 🔍 Exploração e Status
-Comando	O que faz
-git status	Mostra o que mudou, arquivos prontos para commit, etc.
-git log	Mostra o histórico de commits (pressione q para sair).
-git log --oneline --graph --decorate	Histórico resumido, ótimo para visualizar branches.
-git diff	Mostra diferenças entre seu código e o último commit.
-git show <commit_id>	Mostra o que foi alterado em um commit específico.
+git status	> Mostra o que mudou, arquivos prontos para commit, etc.
+git log	> Mostra o histórico de commits (pressione q para sair).
+git log --oneline --graph --decorate	> Histórico resumido, ótimo para visualizar branches.
+git diff	> Mostra diferenças entre seu código e o último commit.
+git show <commit_id>	> Mostra o que foi alterado em um commit específico.
 
 🌱 Branches (Ramificações)
-Comando	O que faz
+
 git branch	Lista todas as branches locais.
 git branch nome-da-branch	Cria uma nova branch.
 git checkout nome-da-branch	Troca para outra branch.
@@ -114,29 +113,91 @@ git merge nome-da-branch	Junta outra branch na branch atual.
 git branch -d nome-da-branch	Apaga uma branch local.
 
 📦 Trabalhando com Commits
-Comando	O que faz
-git commit --amend	Edita o último commit (mensagem ou arquivos).
-git reset --soft HEAD~1	Desfaz o último commit, mas mantém as mudanças no stage.
-git reset --hard HEAD~1	Apaga o último commit e as mudanças (⚠️ cuidado).
-git revert <commit_id>	Cria um novo commit que desfaz outro commit.
+git commit --amend	> Edita o último commit (mensagem ou arquivos).
+git reset --soft HEAD~1	> Desfaz o último commit, mas mantém as mudanças no stage.
+git reset --hard HEAD~1	> Apaga o último commit e as mudanças (⚠️ cuidado).
+git revert <commit_id>	> Cria um novo commit que desfaz outro commit.
 
 🔄 Sincronização e Colaboração
-Comando	O que faz
-git fetch	Baixa alterações do remoto sem misturar no seu código.
-git pull	Baixa e mescla alterações do remoto na sua branch.
-git push origin nome-da-branch	Envia sua branch para o repositório remoto.
-git remote -v	Lista repositórios remotos conectados.
+git fetch	> Baixa alterações do remoto sem misturar no seu código.
+git pull	> Baixa e mescla alterações do remoto na sua branch.
+git push origin nome-da-branch	> Envia sua branch para o repositório remoto.
+git remote -v	> Lista repositórios remotos conectados.
 
 🧹 Limpeza e Segurança
-Comando	O que faz
-git stash	Guarda temporariamente mudanças sem fazer commit.
-git stash pop	Recupera mudanças guardadas pelo stash.
-git clean -f	Remove arquivos não rastreados (⚠️ cuidado).
+git stash	> Guarda temporariamente mudanças sem fazer commit.
+git stash pop	> Recupera mudanças guardadas pelo stash.
+git clean -f	> Remove arquivos não rastreados (⚠️ cuidado).
 
 🆘 Ajuda
-Comando	O que faz
-git help <comando>	Mostra a documentação do comando.
-git --version	Mostra a versão do Git instalada.
+git help <comando>	> Mostra a documentação do comando.
+git --version	>  Mostra a versão do Git instalada.
 
 📌 Dica de ouro:
 Sempre faça git pull antes de começar a mexer no projeto para evitar conflitos e manter tudo atualizado.
+
+
+<h1> 🔎 Ver Histórico e Hashes </h1>
+
+Primeiro, veja os commits existentes: git log --oneline
+
+Saída de exemplo:
+
+4f8a7c1 Ajuste no layout (commit mais recente)
+8b2d3f9 Adicionado botão de login
+0a1b2c3 Versão inicial do projeto
+
+
+Vamos supor que queremos voltar para o commit 8b2d3f9.
+
+⏪ Voltar para um Commit Antigo (Checkout)
+
+Para “viajar no tempo” e ver como o projeto estava naquele commit:
+
+git checkout 8b2d3f9
+
+
+📌 Importante:
+Você estará em um estado "detached HEAD", ou seja, olhando o projeto como ele era, mas fora de qualquer branch. Se você tentar editar e commitar aqui, pode se confundir.
+
+🔙 Voltar Para o Último Commit (Branch Atual)
+
+Quando terminar de explorar, volte para sua branch principal:
+
+git checkout main
+
+
+Agora você estará de volta ao último commit normal da branch.
+
+🔄 Reverter um Commit Específico (Opcional)
+
+Se você quiser desfazer só as mudanças de um commit antigo, sem apagar o histórico:
+
+git revert 8b2d3f9
+
+
+Isso cria um novo commit que desfaz o commit escolhido.
+
+⏱️ Resetar Para um Commit Antigo (Cuidado!)
+
+Se você quiser voltar para um commit e apagar os commits mais recentes (destrutivo):
+
+git reset --hard 8b2d3f9
+
+
+⚠️ Isso apaga permanentemente tudo que veio depois daquele commit (use só se tiver certeza).
+
+Se já deu push, pode causar problemas para outros que trabalham no repositório.
+
+
+<h1> 💡 Resumo Visual </h1>
+
+git log --oneline → veja o histórico
+
+git checkout <hash> → explore um commit antigo
+
+git checkout main → volte para o estado atual
+
+git revert <hash> → desfaz aquele commit com segurança
+
+git reset --hard <hash> → volta o projeto para aquele ponto (perigoso se não souber o que está fazendo)
