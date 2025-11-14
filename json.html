@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Resumo — Home</title>
+<title>JSON</title>
 <style>
 body{margin:0;font-family:Arial;background:#0d0d0d;color:#f2f2f2;}
 nav{background:#111;padding:15px;position:sticky;top:0;display:flex;gap:15px;}
 a{color:#4da3ff;text-decoration:none;font-size:18px;}
 .card{background:#1a1a1a;padding:20px;margin:15px;border-radius:10px;}
+pre{background:#000;padding:10px;border-radius:8px;color:#4da3ff;overflow:auto;}
 </style>
 </head>
 <body>
@@ -17,9 +18,23 @@ a{color:#4da3ff;text-decoration:none;font-size:18px;}
   <a href="git.html">Git</a>
   <a href="json.html">JSON</a>
 </nav>
+
 <div class="card">
-  <h1>Resumo Completo — VS Code, Git e JSON</h1>
-  <p>Navegue pelo menu para acessar cada conteúdo detalhado.</p>
+<h1>JSON — Estrutura e Exemplo</h1>
 </div>
+
+<div class="card">
+<h2>Exemplo:</h2>
+<pre>{
+  "nome": "Maria",
+  "idade": 22,
+  "ativo": true,
+  "enderecos": [
+    {"rua": "A", "num": 10},
+    {"rua": "B", "num": 20}
+  ]
+}</pre>
+</div>
+
 </body>
 </html>
