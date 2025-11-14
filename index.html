@@ -1,15 +1,173 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tópicos Avançados em Sistemas de Informação II</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resumo: Tópicos Avançados 2</title>
+  <style>
+    body{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height:1.5; padding:18px; color:#111; background:#f7f7f8;}
+    .card{background:#fff; border-radius:10px; padding:14px; margin:10px 0; box-shadow:0 2px 6px rgba(0,0,0,0.06);}
+    h1,h2{margin:6px 0 10px}
+    h1{font-size:20px}
+    h2{font-size:16px}
+    pre{background:#0b0b0b; color:#e6e6e6; padding:10px; border-radius:6px; overflow:auto}
+    code{font-family:monospace; font-size:0.95em}
+    ul{margin:6px 0 8px 18px}
+    .cheatsheet td{padding:6px 10px; font-family:monospace}
+    .note{font-size:0.9em; color:#444}
+    .small{font-size:0.9em; color:#666}
+    .center{text-align:center}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Tópicos Avançados em Sistemas de Informação II</h1>
-        <p>Bem-vindo à aula de hoje!</p>
-    </div>
+  <div class="card">
+    <h1>Resumo rápido — Git, VS Code e JSON</h1>
+    <p class="note">Resumo baseado nos materiais da disciplina "Tópicos Avançados em Sistemas de Informação II". Use o índice para ir direto ao tópico.</p>
+    <p><strong>Índice:</strong> 1) Git - conceito • 2) Estados e fluxo Git • 3) Comandos principais • 4) Branches & Merge • 5) Conflitos • 6) Reset / Restore / Clean • 7) JSON • 8) Cheatsheet</p>
+  </div>
+
+  <div class="card" id="git-conceito">
+    <h2>2. O que é Git (conceito)</h2>
+    <ul>
+      <li>Git é um sistema de controle de versão distribuído criado por Linus Torvalds (2005). Permite rastrear alterações, colaborar e manter o histórico do projeto. :contentReference[oaicite:4]{index=4}</li>
+      <li>Diferente de outros sistemas: Git trata os dados como "fotos" (snapshots) do sistema de arquivos a cada commit — eficiente e seguro. :contentReference[oaicite:5]{index=5}</li>
+      <li>Operações são, em grande parte, locais (rápidas). Git usa checksums para garantir integridade. :contentReference[oaicite:6]{index=6}</li>
+    </ul>
+  </div>
+
+  <div class="card" id="estados">
+    <h2>3. Três estados do Git (fluxo básico)</h2>
+    <ol>
+      <li><strong>Modified</strong> — você editou arquivos no diretório de trabalho.</li>
+      <li><strong>Staged</strong> (área de preparo/index) — você adicionou mudanças com <code>git add</code>.</li>
+      <li><strong>Committed</strong> — as alterações estão salvas no banco local com <code>git commit</code>.</li>
+    </ol>
+    <p class="small">Fluxo típico: editar → <code>git add</code> → <code>git commit</code> → <code>git push</code> (remoto). :contentReference[oaicite:7]{index=7}</p>
+  </div>
+
+  <div class="card" id="comandos">
+    <h2>4. Comandos principais (explicado passo a passo)</h2>
+    <table class="cheatsheet">
+      <tr><td><code>git init</code></td><td>Inicializa repositório Git local na pasta atual.</td></tr>
+      <tr><td><code>git clone &lt;URL&gt;</code></td><td>Clona repositório remoto.</td></tr>
+      <tr><td><code>git status</code></td><td>Mostra arquivos modificados / staged / untracked.</td></tr>
+      <tr><td><code>git add &lt;arquivo&gt;</code></td><td>Prepara arquivo para commit (staging).</td></tr>
+      <tr><td><code>git commit -m "mensagem"</code></td><td>Cria commit com a mensagem informada.</td></tr>
+      <tr><td><code>git log</code></td><td>Mostra histórico de commits.</td></tr>
+      <tr><td><code>git pull</code></td><td>Puxa alterações do remoto e tenta mesclar.</td></tr>
+      <tr><td><code>git push</code></td><td>Envia commits locais para o remoto.</td></tr>
+      <tr><td><code>git branch</code></td><td>Lista branches locais.</td></tr>
+      <tr><td><code>git checkout &lt;branch&gt;</code></td><td>Muda para a branch informada.</td></tr>
+      <tr><td><code>git checkout -b &lt;branch&gt;</code></td><td>Cria e muda para nova branch.</td></tr>
+    </table>
+    <p class="small">(Comandos e explicações baseados nas apostilas/Slides da disciplina). :contentReference[oaicite:8]{index=8}</p>
+  </div>
+
+  <div class="card" id="branches">
+    <h2>5. Branches — como funciona</h2>
+    <ul>
+      <li>Uma branch é apenas um ponteiro para um commit (não uma cópia física do código). Por padrão existe a branch <code>main</code> (ou <code>master</code>). :contentReference[oaicite:9]{index=9}</li>
+      <li>Exemplo de criação e fluxo:
+        <pre><code># criar branch e mudar para ela
+git branch dev
+git checkout dev
+
+# ou em um único passo
+git checkout -b feature-x
+        </code></pre>
+      </li>
+      <li><strong>HEAD</strong> aponta para a branch atual (ou diretamente para um commit, em detached HEAD). :contentReference[oaicite:10]{index=10}</li>
+      <li>Visualizar graficamente:
+        <pre><code>git log --oneline --graph --all</code></pre>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card" id="merge-conflitos">
+    <h2>6. Merge e conflitos</h2>
+    <ul>
+      <li><strong>Merge</strong>: combina commits de outra branch na branch atual. Tipos: fast-forward (sem commit extra) ou merge commit (quando há divergência). :contentReference[oaicite:11]{index=11}</li>
+      <li><strong>Conflitos</strong>: ocorrem quando duas alterações concorrentes em mesmas linhas não podem ser mescladas automaticamente. O Git marca o arquivo com indicadores (<<<<<<<, =======, >>>>>>>).</li>
+      <li>Como resolver:
+        <ol>
+          <li>Abra o arquivo, decida o que manter (edite para ficar correto).</li>
+          <li>Marque como resolvido: <code>git add &lt;arquivo&gt;</code></li>
+          <li>Finalize com: <code>git commit -m "Resolvido conflito"</code></li>
+        </ol>
+      </li>
+      <p class="small">(Exemplo e procedimento conforme material do curso). :contentReference[oaicite:12]{index=12}</p>
+    </ul>
+  </div>
+
+  <div class="card" id="reset-restore">
+    <h2>7. Redefinir / restaurar / limpeza de arquivos</h2>
+    <ul>
+      <li><code>git restore .</code> — desfaz alterações nos arquivos modificados (volta ao último commit). Não afeta commits. :contentReference[oaicite:13]{index=13}</li>
+      <li><code>git reset --hard &lt;commit&gt;</code> — redefine o repositório para o commit indicado; descarta commits e alterações locais (cuidado: operação destrutiva). :contentReference[oaicite:14]{index=14}</li>
+      <li><code>git clean -n</code> — mostra quais arquivos não rastreados seriam removidos (simulação). :contentReference[oaicite:15]{index=15}</li>
+      <li><code>git clean -f</code> — remove de fato arquivos não rastreados. <strong>Use com cautela</strong>. :contentReference[oaicite:16]{index=16}</li>
+    </ul>
+  </div>
+
+  <div class="card" id="json">
+    <h2>8. Introdução rápida ao JSON</h2>
+    <ul>
+      <li>JSON = JavaScript Object Notation. Formato leve para trocar e armazenar dados semi-estruturados. Útil em APIs (cliente ↔ servidor). :contentReference[oaicite:17]{index=17}</li>
+      <li>Sintaxe básica:
+        <pre><code>{
+  "nome": "Maria",
+  "idade": 22,
+  "ativo": true,
+  "enderecos": [
+    {"rua": "A", "num": 10},
+    {"rua": "B", "num": 20}
+  ]
+}</code></pre>
+      </li>
+      <li>Tipos: string (entre aspas), número, boolean, null, objeto ({}), vetor ([]). JSON é independente de linguagem (parsers existem em várias linguagens). :contentReference[oaicite:18]{index=18}</li>
+    </ul>
+  </div>
+
+  <div class="card" id="cheatsheet">
+    <h2>9. Cheatsheet — comandos mais usados (resumido)</h2>
+    <pre><code># configuração inicial (nome + email)
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
+
+# clonar
+git clone https://github.com/usuario/repositorio.git
+
+# fluxo comum
+git status
+git add .
+git commit -m "mensagem"
+git pull
+git push
+
+# branches e merge
+git checkout -b minha-branch
+# trabalhar...
+git add .
+git commit -m "feat: algo"
+git checkout main
+git merge minha-branch
+
+# desfazer mudanças locais
+git restore arquivo.txt      # desfaz alterações no arquivo
+git reset --hard HEAD~1      # volta 1 commit (atenção!)
+git clean -n                 # mostrar arquivos não rastreados
+git clean -f                 # apagar arquivos não rastreados
+</code></pre>
+  </div>
+
+  <div class="card center small">
+    <p><strong>Fontes (PDFs usados para este resumo):</strong></p>
+    <p class="small">
+      Materiais enviados — slides e apostilas do professor Gilmar Yahuíta:
+      :contentReference[oaicite:19]{index=19} :contentReference[oaicite:20]{index=20} :contentReference[oaicite:21]{index=21} :contentReference[oaicite:22]{index=22} :contentReference[oaicite:23]{index=23}
+    </p>
+    <p class="note">Nota: alguns uploads antigos podem ter expirado. Se você percebe falta de slides ou quer que eu extraia mais exemplos/códigos dos PDFs, reenvie-os e eu atualizo o HTML rápido.</p>
+    <p class="small">Boa prova! Se quiser, eu também salvo este HTML num arquivo pronto para download (eu posso gerar o arquivo aqui se você quiser).</p>
+  </div>
 </body>
 </html>
