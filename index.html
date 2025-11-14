@@ -2,24 +2,164 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Resumo — Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Manual Completo — Git, VS Code, JSON</title>
 <style>
-body{margin:0;font-family:Arial;background:#0d0d0d;color:#f2f2f2;}
-nav{background:#111;padding:15px;position:sticky;top:0;display:flex;gap:15px;}
-a{color:#4da3ff;text-decoration:none;font-size:18px;}
-.card{background:#1a1a1a;padding:20px;margin:15px;border-radius:10px;}
+body{background:#0d0d0d;color:#e6e6e6;font-family:Arial;line-height:1.6;padding:20px;}
+h1,h2,h3{color:#4da3ff;}
+.card{background:#1a1a1a;padding:20px;margin:15px 0;border-radius:10px;}
+pre{background:#000;padding:12px;border-radius:8px;color:#82c3ff;overflow:auto;}
+strong{color:#4da3ff;}
+ul{margin-left:20px;}
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html">Início</a>
-  <a href="git.html">Git</a>
-  <a href="json.html">JSON</a>
-</nav>
+
+<h1>Manual Completo e Explicado — Git, VS Code e JSON</h1>
+<p>Este documento foi criado para estudo rápido e profundo, com explicações detalhadas e exemplos práticos.</p>
+
 <div class="card">
-  <h1>Resumo Completo — VS Code, Git e JSON</h1>
-  <p>Navegue pelo menu para acessar cada conteúdo detalhado.</p>
+<h2>1. VS Code — Quando usar e por quê</h2>
+<p>O VS Code é um editor de código moderno, leve e poderoso. Você usa quando precisa:</p>
+<ul>
+<li><strong>Programar</strong> em JavaScript, Python, Java, etc.</li>
+<li><strong>Editar arquivos do Git</strong> com facilidade.</li>
+<li><strong>Acessar terminal integrado</strong> sem trocar de janela.</li>
+<li><strong>Instalar extensões</strong> que ajudam no projeto (ESLint, Prettier, GitLens...).</li>
+</ul>
+<h3>Quando NÃO usar VS Code</h3>
+<ul>
+<li>Para escrever textos longos (Word é melhor).</li>
+<li>Para edição pesada de imagens (Photoshop é melhor).</li>
+</ul>
 </div>
+
+<div class="card">
+<h2>2. GIT — Explicação detalhada e quando usar cada comando</h2>
+
+<h3>O que é Git?</h3>
+<p>Git é um sistema que guarda versões do seu projeto. Você usa Git para:</p>
+<ul>
+<li>Voltar no tempo caso algo quebre.</li>
+<li>Trabalhar com outras pessoas sem misturar arquivos.</li>
+<li>Criar cópias separadas (branches) para testar ideias.</li>
+<li>Sincronizar seu código com GitHub ou GitLab.</li>
+</ul>
+
+<h3>Como Git funciona (explicação simples)</h3>
+<p>O Git tem 3 estados:</p>
+<ul>
+<li><strong>Modified</strong>: você mudou o arquivo.</li>
+<li><strong>Staged</strong>: você preparou o arquivo para salvar.</li>
+<li><strong>Committed</strong>: a mudança foi salva no histórico.</li>
+</ul>
+
+<h3>Comando: <code>git status</code></h3>
+<p><strong>Quando usar:</strong> Sempre que quiser saber o que mudou no projeto.</p>
+<p><strong>Exemplo:</strong></p>
+<pre>git status</pre>
+
+<h3>Comando: <code>git add .</code></h3>
+<p><strong>Quando usar:</strong> Antes de fazer um commit — prepara os arquivos.</p>
+<p><strong>Use quando:</strong></p>
+<ul>
+<li>Editou um arquivo e quer salvar a alteração.</li>
+<li>Criou um arquivo novo.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<pre>git add .</pre>
+
+<h3>Comando: <code>git commit -m "mensagem"</code></h3>
+<p><strong>Quando usar:</strong> Depois do git add, para salvar no histórico.</p>
+<p><strong>Mensagem recomendada:</strong> curta e direta.</p>
+<pre>git commit -m "arruma bug no login"</pre>
+
+<h3>Comando: <code>git push</code></h3>
+<p><strong>Quando usar:</strong> Para enviar suas mudanças ao GitHub.</p>
+<pre>git push</pre>
+
+<h3>Comando: <code>git pull</code></h3>
+<p><strong>Quando usar:</strong> Antes de começar a trabalhar.</p>
+<p>Serve para trazer mudanças que outra pessoa mandou.</p>
+<pre>git pull</pre>
+
+<h3>Comando: <code>git checkout -b nova-branch</code></h3>
+<p><strong>Quando usar:</strong> Sempre que for trabalhar em algo novo sem mexer no projeto principal.</p>
+<p><strong>Exemplo:</strong></p>
+<pre>git checkout -b feature-login</pre>
+
+<h3>Comando: <code>git merge</code></h3>
+<p><strong>Quando usar:</strong> Quando quiser juntar o trabalho de uma branch com outra.</p>
+<p><strong>Exemplo:</strong></p>
+<pre>
+git checkout main
+git merge feature-login
+</pre>
+
+<h3>Comando: <code>git restore</code></h3>
+<p><strong>Quando usar:</strong> Quando você mudou algo mas quer <strong>desfazer antes de fazer commit</strong>.</p>
+<p><strong>Exemplo:</strong></p>
+<pre>git restore arquivo.txt</pre>
+
+<h3>Comando: <code>git reset --hard</code></h3>
+<p><strong>Quando usar:</strong> Para voltar a um estado antigo e <strong>apagar commits recentes</strong>.</p>
+<p><strong>Cuidado:</strong> destrutivo.</p>
+<pre>git reset --hard HEAD~1</pre>
+
+<h3>Comando: <code>git clean -f</code></h3>
+<p><strong>Quando usar:</strong> Para remover arquivos que o Git não controla (ex: arquivos temporários).</p>
+<pre>git clean -f</pre>
+
+</div>
+
+<div class="card">
+<h2>3. JSON — Explicação completa</h2>
+<p>JSON é um formato para guardar e enviar dados. É muito usado em APIs e sistemas web.</p>
+
+<h3>Quando usar JSON?</h3>
+<ul>
+<li>Quando uma aplicação envia dados para outra.</li>
+<li>Quando você salva configurações ou informações simples.</li>
+<li>Quando recebe dados de uma API.</li>
+</ul>
+
+<h3>Estrutura do JSON</h3>
+<ul>
+<li>Usa chaves { }</li>
+<li>Valores sempre entre aspas se forem texto</li>
+<li>Listas usam [ ]</li>
+</ul>
+
+<pre>{
+  "nome": "Maria",
+  "idade": 22,
+  "ativo": true,
+  "enderecos": [
+    {"rua": "A", "num": 10},
+    {"rua": "B", "num": 20}
+  ]
+}</pre>
+
+<h3>Erros comuns em JSON</h3>
+<ul>
+<li>Falta de vírgula entre itens</li>
+<li>Aspas ausentes</li>
+<li>Usar comentário (JSON não aceita comentários)</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h2>4. Fluxo recomendado para usar Git (simples e eficiente)</h2>
+<pre>
+1. git pull
+2. mudar arquivos
+3. git status
+4. git add .
+5. git commit -m ""
+6. git push
+</pre>
+</div>
+
 </body>
 </html>
